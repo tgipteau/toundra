@@ -17,17 +17,30 @@ le cadre du projet TOUNDRA.<br>
 #### Le modèle
 
 Le modèle dit "à deux équations" modélise l'évolution de la densité de population d'une espèce
-d'arbre et de ses graines. On ajoute à ce processus déterministe (EDP) un dérèglement stochastique par 
+d'arbre et de ses graines.   
+On ajoute à ce processus déterministe (EDP) un dérèglement stochastique par 
 l'apparition de feux de forêt aléatoires.
-
-
-#### Contenu de ce dépôt
 
 ___
 
 ## Utilisation 
 
+Actuellement, l'utilisation du programme se fait en trois temps :
+0. Installer les dépendances requises pour python (fichier "requirements.txt")
+1. Configurer la simulation à l'aide de "toundra_config.yaml", à ouvrir avec un éditeur de texte quelconque.
+2. Lancer le programme principal avec "toundra.py".
 
 
+#### Configuration
 
+**Il n'est normalement pas nécessaire de modifier toundra.py**. Le seul fichier modifié par l'utilisateur est le .yaml.  
+On trouvera dans le fichier config_toundra.yaml de nombreux commentaires explicatifs. 
+
+___
+
+ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+Les programmes de ce dépôt contiennent du code généré par une intelligence artificielle.
 

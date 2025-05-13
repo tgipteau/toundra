@@ -1,39 +1,44 @@
-# Paramètres de simulation
-
-MAKE_NEW_SIMULATION: True
-SIMULATION_SAVE_FOLDER: "default"
-
-ISO_SCALE: 18                     # à changer en fonction de la taille de omega
-MAX_ELMTS_PER_TILE: 12          # ratio par rapport à iso_scale
-ELMT_SIZE: 0.6                   # taille des arbres en ratio (peut être > 1) par rapport à iso_scale
-TPS: 16                          # ticks par seconde (=vitesse de lecture)
-FIRE_DURATION: 5                 # durée en pas de temps (entier)
-DEAD_TREE_DURATION: 15           # idem
-
-MAX_TRUE_NUMBER_OF_TREES: 1.2
+#@#@#@# PARAMETRES TOUNDRA #@#@#@#
 
 
-## Paramètres suivants utilisés seulement si MAKE_NEW_SIMULATION: True
+SIMULATION_SAVE_FOLDER: "default" # nom du dossier de la simulation à observer ou créer
+MAKE_NEW_SIMULATION: True   # si "True", créé une nouvelle simulation dans le dossier, écrasant la précédente
+                            # si le dossier n'est pas vide ; si "False", essaye de lire la simulation enregistrée
+                            # dans SIMULATION_SAVE_FOLDER, renvoyant une erreursi le dossier n'existe pas.
+
+## PARAMETRES DU MODELE
 
 params_simulation:
-  # Paramètres du modèle
+  # Paramètres du modèle EDP
   alpha: 1
   beta: 1
   delta: 0.5
-
   a: 3
   b: 1
   c: 0.5
-
   # Paramètres de discrétisation
-  L: 20
-  J: 40                       # discrétisation spatiale
-  T: 100                     # temps maximal
+  L: 20             # largeur (& longueur) de l'espace
+  J: 40             # discrétisation spatiale
+  T: 100            # temps maximal
   N: 1000
-
   # Paramètres feux
-  p: 0.1             # probabilité feu à chaque pas de temps
+  p: 0.1             # probabilité de feu à chaque pas de temps
   freq: 1            # pas de temps minimal entre feux
-  intensity: 0.7
-  minree: 1
-  maxree: 6
+  intensity: 0.7     # intensité d'un feu (0.6 => 60 % des arbres dans le rayon du feu meurent)
+  minree: 1          # rayon minimal d'un feu
+  maxree: 6          # rayon maximal d'un feu
+
+
+## PARAMETRES DE RENDU
+ISO_SCALE: 18                    # zoom / dezoom (modifier si le rendu "sort" de l'écran
+MAX_TRUE_NUMBER_OF_TREES: 1.3    # densité maximale attendue
+MAX_ELMTS_PER_TILE: 12           # nombre d'arbres à dessiner sur une case pour figurer la densité max
+ELMT_SIZE: 0.6                   # taille des arbres en ratio par rapport à iso_scale
+TPS: 16                          # ticks par seconde (=vitesse de lecture)
+FIRE_DURATION: 5                 # durée en pas de temps de l'animation de feu (ATTENTION : C'EST SEULEMENT VISUEL )
+DEAD_TREE_DURATION: 15           # idem pour l'animation d'arbres morts
+
+
+
+
+
