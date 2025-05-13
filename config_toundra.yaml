@@ -1,0 +1,39 @@
+# Paramètres de simulation
+
+MAKE_NEW_SIMULATION: True
+SIMULATION_SAVE_FOLDER: "default"
+
+ISO_SCALE: 18                     # à changer en fonction de la taille de omega
+MAX_ELMTS_PER_TILE: 12          # ratio par rapport à iso_scale
+ELMT_SIZE: 0.6                   # taille des arbres en ratio (peut être > 1) par rapport à iso_scale
+TPS: 16                          # ticks par seconde (=vitesse de lecture)
+FIRE_DURATION: 5                 # durée en pas de temps (entier)
+DEAD_TREE_DURATION: 15           # idem
+
+MAX_TRUE_NUMBER_OF_TREES: 1.2
+
+
+## Paramètres suivants utilisés seulement si MAKE_NEW_SIMULATION: True
+
+params_simulation:
+  # Paramètres du modèle
+  alpha: 1
+  beta: 1
+  delta: 0.5
+
+  a: 3
+  b: 1
+  c: 0.5
+
+  # Paramètres de discrétisation
+  L: 20
+  J: 40                       # discrétisation spatiale
+  T: 100                     # temps maximal
+  N: 1000
+
+  # Paramètres feux
+  p: 0.1             # probabilité feu à chaque pas de temps
+  freq: 1            # pas de temps minimal entre feux
+  intensity: 0.7
+  minree: 1
+  maxree: 6

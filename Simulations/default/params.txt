@@ -1,0 +1,24 @@
+Simulation Simulations/default
+----------
+alpha 1
+beta 1
+delta 0.5
+a 3
+b 1
+c 0.5
+L 20
+J 40
+T 100
+N 1000
+p 0.1
+freq 1
+intensity 0.7
+minree 1
+maxree 6
+----------
+dx 0.5
+dy 0.5
+dt 0.1
+dtau 0.05
+kx 0.1
+ky 0.1
