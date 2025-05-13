@@ -1,4 +1,4 @@
-## FISO 3
+## TOUNDRA
 ### <b>Modèle à quatre équations avec compétition. Méthode des différences finies.</b>
 
 ## UTILISATION 
