@@ -1,0 +1,8 @@
+pygame-ce==2.5.2
+pygame-gui
+opencv-python
+pandas
+pyyaml
+numpy
+scipy
+tqdm
