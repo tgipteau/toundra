@@ -1,22 +1,34 @@
 ## TOUNDRA
-### <b>Modèle à quatre équations avec compétition. Méthode des différences finies.</b>
-
-## UTILISATION 
-
-1 - régler ses paramètres de simulation dans config.yaml <i>(lire les commentaires)</i><br>
-2 - lancer fiso3.main<br>
-3- les boutons / curseurs ne sont utilisables qu'après un tour complet de la simulation,
-pour pouvoir sauvegarder la vidéo / les frames<br>
+### **Modèle de forêt dynamique. **
 
 
-<br>
-<br>
-<b>Après utilisation, on trouvera dans Simulations/{SIM_NAME} :</b><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- les données de la simulation<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- un fichier feux<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- un fichier des paramètres associés à la simulation<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- une vidéo<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- un dossier contenant les frames de la simulation, en cas de problème avec la vidéo
-    (codecs, etc...)<br>
+Le script présent dans ce dépôt est un outil de simulation d'évolution de forêt.<br>
+Ces évolutions sont issues de modèles développés et étudiés par l'équipe VELO du LS2N à Nantes, dans 
+le cadre du projet TOUNDRA.<br>
+
+
+* [Plus d'informations sur le projet TOUNDRA](https://pagesperso.ls2n.fr/~cantin-g/toundra.html)
+* [L'équipe VELO](https://velo.pythonanywhere.com/)
+* [On the degradation of forest ecosystems by extreme events: Statistical Model Checking of a hybrid model](https://hal.science/hal-04069502v1)
+
+
+### Le modèle
+
+Le modèle dit "à deux équations" modélise l'évolution de la densité de population d'une espèce
+d'arbre et de ses graines. On ajoute à ce processus déterministe (EDP) un dérèglement stochastique par 
+l'apparition de feux de forêt aléatoires.
+
+
+### Contenu de ce dépôt
+
+On utilise le modèle à deux équations (une seule espèce d'arbre). C'est un programme entièrement écrit<br>
+en Python, et donc portable sur une plateforme comme PythonAnywhere. Ne comprend pas d'interface utilisateur<br>
+pour configurer la simulation : la configuration se fait par l'édition d'un fichier <i>.yaml</i>.<br>
+
+
+# UTILISATION 
+
+
+
 
 
