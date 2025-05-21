@@ -10,9 +10,7 @@ import os
 import random
 import math
 from tqdm import tqdm
-
-with open("config_toundra.yaml", "r") as f:
-    config = yaml.safe_load(f)
+import sys
 
 
 ########################################################################################
@@ -20,16 +18,19 @@ with open("config_toundra.yaml", "r") as f:
 # NOTA : NE PAS MODIFIER ICI. CHANGER LE FICHIER CONFIG.YAML
 ########################################################################################
 
-os.makedirs("Simulations", exist_ok=True)
-MAKE_NEW_SIMULATION = config["MAKE_NEW_SIMULATION"]
-SIMULATION_SAVE_FOLDER = os.path.join("Simulations", config["SIMULATION_SAVE_FOLDER"])
 
-ISO_SCALE = config["ISO_SCALE"]  # échelle du rendu
-MAX_ELMTS_PER_TILE = config["MAX_ELMTS_PER_TILE"]  # ratio par rapport à iso_scale
-ELMT_SIZE = int(config['ELMT_SIZE'] * ISO_SCALE)  # taille des arbres en ratio (peut être > 1) par rapport à iso_scale
-TPS = config["TPS"]  # ticks par seconde (=vitesse de lecture)
-FIRE_DURATION = config["FIRE_DURATION"]  # durée en pas de temps (integer)
-DEAD_TREE_DURATION = config["DEAD_TREE_DURATION"]  # idem
+SIM_NAME = sys.argv[2] # nom de la simulation
+RUN_SIM = bool(sys.argv[1])   # faire tourner ou réutiliser ?
+
+os.makedirs("Simulations", exist_ok=True)
+SIMULATION_SAVE_FOLDER = os.path.join("Simulations", SIM_NAME)
+
+ISO_SCALE = 18 # échelle du rendu
+MAX_ELMTS_PER_TILE = 12 # ratio par rapport à iso_scale
+ELMT_SIZE = .6 * ISO_SCALE  # taille des arbres en ratio (peut être > 1) par rapport à iso_scale
+TPS = 16 # ticks par seconde (=vitesse de lecture)
+FIRE_DURATION = 5 # durée en pas de temps (integer)
+DEAD_TREE_DURATION = 15 # idem
 
 # Généralités pygame
 SCREEN_WIDTH = 1680
@@ -53,8 +54,7 @@ AREA_SCALE = 1  # hectares par pixel
 
 # Max d'arbres (réel)
 TREES_T_MIN = 0
-TREES_T_MAX = config['MAX_TRUE_NUMBER_OF_TREES']
-
+TREES_T_MAX = 1.3
 # MAX T est valué par data_util lors du chargement des données (voir fonction "build_from_solution")
 MAX_T = -1
 TILE_SIZE = 1
@@ -119,21 +119,38 @@ images = {
 ########################################################################################
 
 # Chargement des paramètres depuis le fichier YAML (config)
-alpha = config["params_simulation"]["alpha"]
-beta = config["params_simulation"]["beta"]
-a = config["params_simulation"]["a"]
-b = config["params_simulation"]["b"]
-c = config["params_simulation"]["c"]
-delta = config["params_simulation"]["delta"]
-L = config["params_simulation"]["L"]
-J = config["params_simulation"]["J"]
-T = config["params_simulation"]["T"]
-N = config["params_simulation"]["N"]
-p = config["params_simulation"]["p"]
-freq = config["params_simulation"]["freq"]
-intensity = config["params_simulation"]["intensity"]
-minree = config["params_simulation"]["minree"]
-maxree = config["params_simulation"]["maxree"]
+alpha = ["alpha"]
+beta = ["beta"]
+a = ["a"]
+b = ["b"]
+c = ["c"]
+delta = ["delta"]
+L = ["L"]
+J = ["J"]
+T = ["T"]
+N = ["N"]
+p = ["p"]
+freq = ["freq"]
+intensity = ["intensity"]
+minree = ["minree"]
+maxree = ["maxree"]
+
+
+
+params = {}
+with open("params.txt", 'r') as f:
+    for ligne in f:
+        # Enlever les espaces et les retours à la ligne
+        ligne = ligne.strip()
+        
+        # Ignore les lignes vides ou les commentaires
+        if not ligne or ligne.startswith("#"):
+            continue
+        
+        # Séparer la ligne en clé et valeur
+        cle, valeur = ligne.split(":", 1)
+        params[cle.strip()] = valeur.strip()
+    
 
 # Calcul des paramètres dérivés
 dx = L / J

@@ -1,8 +1,2 @@
-/.idea/
-/Simulations/
-/Simulations/default/
-/Simulations/default/Frames/
-/Simulations/default/data.csv
-/Simulations/default/fires.dat
-/Simulations/default/params.txt
-/Simulations/default/video.avi
+/Simulations
+.DS_Store
