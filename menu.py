@@ -1,6 +1,7 @@
 import os
 import re
 import shutil
+import subprocess
 import sys
 import threading
 import time
@@ -21,11 +22,12 @@ PARAMETRES_DEFAUT = {
     "L": 50.0,
     "J": 40.0,
     "p": 0.1,
-    "frequency": 1,
+    "freq": 1,
     "minree": 3.0,
     "maxree": 8.0,
     "minI": 0.3,
     "maxI": 1.0,
+    "intensity": 0.8,
 }
 
 progress_history = []
@@ -120,7 +122,9 @@ def creer_nouvelle_simulation(parametres):
     )
     label_loading_sim.pack(pady=10)
 
-    progress = ttk.Progressbar(root, orient="horizontal", length=300, mode="determinate")
+    progress = ttk.Progressbar(
+        root, orient="horizontal", length=300, mode="determinate"
+    )
     progress.pack(pady=10)
     progress["maximum"] = 100
     label_progress = tk.Label(root, text="")
@@ -135,7 +139,7 @@ def creer_nouvelle_simulation(parametres):
                 f.write(f"{cle}: {valeur}\n")
 
     simulation_thread = threading.Thread(
-        target=lambda: subprocess.run([sys.executable, "2_runsim.py", sim_folder])
+        target=lambda: subprocess.run([sys.executable, "toundra.py", "1", sim_folder])
     )
     simulation_thread.start()
 
@@ -220,7 +224,9 @@ def afficher_formulaire_creation():
             champs[cle] = entry
 
     # Bouton Valider
-    btn_valider = tk.Button(root, text="Valider", command=lambda: valider_formulaire(champs))
+    btn_valider = tk.Button(
+        root, text="Valider", command=lambda: valider_formulaire(champs)
+    )
     btn_valider.pack(pady=20)
 
     root.update_idletasks()

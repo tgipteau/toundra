@@ -121,7 +121,7 @@ images = {
 ########################################################################################
 
 params = {}
-with open("params.txt", "r") as f:
+with open(os.path.join(SIM_NAME, "params.txt"), "r") as f:
     for ligne in f:
         # Enlever les espaces et les retours à la ligne
         ligne = ligne.strip()
@@ -142,10 +142,10 @@ a = float(params["a"])
 b = float(params["b"])
 c = float(params["c"])
 delta = float(params["delta"])
-L = int(params["L"])
-J = int(params["J"])
-T = int(params["T"])
-N = int(params["N"])
+L = int(float(params["L"]))
+J = int(float(params["J"]))
+T = int(float(params["T"]))
+N = int(float(params["N"]))
 p = float(params["p"])
 freq = float(params["freq"])
 intensity = float(params["intensity"])
@@ -218,7 +218,7 @@ def q(u):
     return u * (a * (u - b) ** 2 + c)
 
 
-def run_simulation(save_folder="Simulations/default"):
+def run_simulation(save_folder=SIM_NAME):
 
     os.makedirs(save_folder, exist_ok=True)
 
@@ -736,14 +736,14 @@ if __name__ == "__main__":
     print(" ###### STARTED.")
     print("Running main.\n")
 
-    if not os.path.exists(SIMULATION_SAVE_FOLDER) and not MAKE_NEW_SIMULATION:
+    if not os.path.exists(SIMULATION_SAVE_FOLDER) and not RUN_SIM:
         print(
             f"ERROR : Simulation {SIMULATION_SAVE_FOLDER} not found.\n"
-            f' Try setting "MAKE_NEW_SIMULATION" to "True", or select another folder.'
+            f' Try setting "RUN_SIM" to "True", or select another folder.'
         )
         quit(1)
 
-    if MAKE_NEW_SIMULATION:
+    if RUN_SIM:
         # lance la simulation et récupère les paramètres
         run_simulation(SIMULATION_SAVE_FOLDER)
 
