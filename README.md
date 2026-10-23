@@ -36,11 +36,4 @@ Actuellement, l'utilisation du programme se fait en trois temps :
 **Il n'est normalement pas nécessaire de modifier toundra.py**. Le seul fichier modifié par l'utilisateur est le .yaml.  
 On trouvera dans le fichier config_toundra.yaml de nombreux commentaires explicatifs. 
 
-___
-
- Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
-
-Les programmes de ce dépôt contiennent du code généré par une intelligence artificielle.
 
